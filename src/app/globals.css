@@ -14,11 +14,24 @@
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
+
+  body {
+    color:cornflowerblue;
+    background: var(--background);
+    font-family: Arial, Helvetica, sans-serif;
+     margin-top:20px;
+     background-color:#0a0a0a;
+    
+  }
+
+  #navbar{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .linkComp{
+    margin: auto;
+  }
 
 @layer utilities {
   .text-balance {
