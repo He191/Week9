@@ -9,11 +9,11 @@ export default async function detailPage({ params }) {
     // console.log("searchParams", searchParams);
     // const sort=searchParams?.sort || 'asc';
 
-const food_items = await db.query(`SELECT * FROM food_items WHERE route_name=$1`,
-    [params.proddetail]
-);
+    const food_items = await db.query(`SELECT * FROM food_items WHERE route_name=$1`,
+        [params.proddetail]
+    );
 
-   
+
     const wrangledFood_items = food_items.rows;
     console.log(wrangledFood_items);
     console.log(params);
@@ -39,18 +39,18 @@ const food_items = await db.query(`SELECT * FROM food_items WHERE route_name=$1`
     );
     console.log(reviews);
     const wrangledReviews = reviews.rows
-   
+
     async function handleDelete(formValues) {
         "use server";
-    const review_id = formValues.get("review_id");
-    await db.query( `DELETE FROM review_table WHERE review_id = $1`,
-        [review_id]
-    );
-    console.log(review_id);
-    revalidatePath(`/product/${params.proddetail}`);
+        const review_id = formValues.get("review_id");
+        await db.query(`DELETE FROM review_table WHERE review_id = $1`,
+            [review_id]
+        );
+        console.log(review_id);
+        revalidatePath(`/product/${params.proddetail}`);
 
-    redirect(`/product/${params.proddetail}`);
-}
+        redirect(`/product/${params.proddetail}`);
+    }
 
     return (
         <>
@@ -63,16 +63,16 @@ const food_items = await db.query(`SELECT * FROM food_items WHERE route_name=$1`
                     src={wrangledFood_items[0].img_src}
                     alt={wrangledFood_items[0].prod_name}
                     width={400}
-                    height={400} 
+                    height={400}
                     className="object-contain w-auto h-auto ml-6"
-                    />
+                />
 
 
                 <div className="flex flex-col m-11">
                     <h1>{wrangledFood_items[0].prod_name}</h1>
                     <h1>£{wrangledFood_items[0].unit_price}</h1>
                     <p className="">{wrangledFood_items[0].description}</p>
-                
+
                     <form action={handlesumit}
                         className="max-w-sm mx-auto">
                         <div className="mb-5" >
@@ -106,30 +106,30 @@ const food_items = await db.query(`SELECT * FROM food_items WHERE route_name=$1`
                         </div>
                     </form>
 
-                   <div className="flex flex-row space-x-5">
-                    <Link className ="text-right"   href="/">Home</Link>
-                    <Link href="/product">Products</Link>
+                    <div className="flex flex-row space-x-5">
+                        <Link className="text-right" href="/">Home</Link>
+                        <Link href="/product">Products</Link>
                     </div>
                 </div>
- </div>
-        
- {
-                        wrangledReviews.map((reviews) => (
-                            <div key={reviews.review_id}
-                                className="flex flex-col items-center mt-8"
-                            >
-                                <h2>{reviews.name}</h2>
-                                <p>{reviews.comment}</p>
-                                <form action={handleDelete}
-                            className="mt-2"
-                            >
+            </div>
 
-                            <input type="hidden" 
-                            name="review_id" 
-                            id="review_id"
-                            value={reviews.review_id}
-                             />
-                              <button
+            {
+                wrangledReviews.map((reviews) => (
+                    <div key={reviews.review_id}
+                        className="flex flex-col items-center mt-8"
+                    >
+                        <h2>{reviews.name}</h2>
+                        <p>{reviews.comment}</p>
+                        <form action={handleDelete}
+                            className="mt-2"
+                        >
+                            <label htmlFor="review_id"></label>
+                            <input type="hidden"
+                                name="review_id"
+                                id="review_id"
+                                value={reviews.review_id}
+                            />
+                            <button
                                 type="submit"
                                 className="text-white  bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1 text-center"
                             >
@@ -137,10 +137,10 @@ const food_items = await db.query(`SELECT * FROM food_items WHERE route_name=$1`
                             </button>
                         </form>
 
-                            </div>
-                        ))}
+                    </div>
+                ))}
 
-        
+
         </>
 
     );
