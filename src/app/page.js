@@ -11,7 +11,7 @@ export default function HomePage(){
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 5 }}
     >
-      <h1 className="text-center font-bold text-5xl mr-12 mt-20 ">Hetal&aposs Home Kitchen</h1>
+      <h1 className="text-center font-bold text-5xl mr-12 mt-20 ">Hetal&apos; Home Kitchen</h1>
     <Image
     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJBTeHtGkoY3_a-PM2Jh85tB8HKsmNiUMJXVk1YAv8dkJ7Q7FFPBDSoTD-vQ98eh6pup4&usqp=CAU"
     alt="Hetal Home's Kitchen "
