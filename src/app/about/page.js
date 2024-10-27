@@ -1,9 +1,11 @@
+
 export const metadata = {
     title: "About my Kitchen",
     description: "Authentic Indian food",
   };
 
-export default function about() {
+export default async function about() {
+      
     return (
         <>
             <h1 className="text-center mt-11 text-3xl">About Hetal&apos; Home Kitchen</h1>

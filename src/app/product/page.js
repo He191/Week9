@@ -47,7 +47,7 @@ export default async function product({ searchParams }) {
 
                             <Link href={`/product/${items.route_name}`}>
                                 <Image
-                                    className="ml-4 hover:scale-105 transition-transform duration-300"
+                                    className="ml-4 hover:scale-105  duration-300 border border-gray-300 rounded-lg shadow-lg"
                                     src={items.img_src}
                                     alt={items.prod_name}
                                     width={300}
