@@ -2,7 +2,7 @@
 import { CartContext } from "@/context/cartContext";
 import { useContext } from "react";
 import { handleOrder } from "./order";
-import { UserButton, SignInButton,SignUpButton ,SignIn,SignedOut, SignedIn} from "@clerk/nextjs"
+import { SignedOut, SignedIn} from "@clerk/nextjs"
 
 export default function CartPage() {
 

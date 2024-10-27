@@ -3,6 +3,7 @@ import '../app/globals.css';
 import { useContext } from "react";
 import { CartContext } from "@/context/cartContext";
 import Image from "next/image";
+import { SignedOut, SignedIn} from "@clerk/nextjs"
 
 export default function ProductDetailsClient({ product, reviews, onSubmit }) {
     
@@ -45,6 +46,10 @@ export default function ProductDetailsClient({ product, reviews, onSubmit }) {
                 </form>
             </div>
             <div className="bg-slate-300 rounded-lg w-2/5">
+                <SignedOut>
+                    <h3>Please Sign in or Sign up to post your review!</h3>
+                </SignedOut>
+                <SignedIn>
                 {/* Review form */}
                 <form action={onSubmit} className=" flex max-w-sm mx-auto">
                     <label htmlFor="comment" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white m-2">
@@ -61,7 +66,7 @@ export default function ProductDetailsClient({ product, reviews, onSubmit }) {
                         Review
                     </button>
                 </form>
-
+                </SignedIn>
                 {/* Display reviews */}
                 <div className="flex flex-wrap">
                 {reviews.map((review) => (
