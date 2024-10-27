@@ -121,7 +121,7 @@ export default async function Profile({ searchParams }){
         {wrangledReviews.map((review) => (
                     <div key={review.prod_name} className="flex flex-col items-center mt-8">
                         <h3>{review.prod_name}</h3>
-                        <p>" {review.comment} "</p>
+                        <p className="italic">{review.comment}</p>
                         <form action={handleDelete} className="mt-2">
                             <input type="hidden" name="review_id" value={review.review_id} />
                             <button type="submit" className="text-white bg-blue-500 hover:bg-blue-800 font-medium rounded-lg text-sm px-3 py-1">

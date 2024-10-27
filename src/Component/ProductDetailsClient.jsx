@@ -67,7 +67,7 @@ export default function ProductDetailsClient({ product, reviews, onSubmit }) {
                 {reviews.map((review) => (
                     <div key={review.review_id} className="text-center mt-8 bg-teal-100 m-2">
                         <h3>{review.first_name} {review.last_name}</h3>
-                        <p>" {review.comment} "</p>
+                        <p className="italic">{review.comment}</p>
                     </div>
                 ))}
                 </div>
